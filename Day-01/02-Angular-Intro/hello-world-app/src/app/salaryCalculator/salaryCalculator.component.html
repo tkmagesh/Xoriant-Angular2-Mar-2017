@@ -19,7 +19,5 @@
 	<div class="field">
 		<input type="button" value="Calculate" (click)="calculator.calculate()">
 	</div>
-	<div class="field">
-		<div id="divResult">{{calculator.salary}}</div>
-	</div>
+	<salary-display [data]="calculator.salary"></salary-display>
 </div>

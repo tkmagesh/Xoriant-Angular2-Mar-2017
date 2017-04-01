@@ -1,29 +1,14 @@
 body{
 		margin-left: 50px;
 	}
-	section{
+/deep/	section{
 		margin-bottom: 10px;
 	}
-	.bugname{
-		font-size: 20pt;
-	}
+	
 /deep/	.closed{
 		color : red;
 		text-decoration: line-through;
 		font-style: italic;
 		font-weight: bold;
 	}
-	ol{
-		width: 50%;
-		list-style: none;
-	}
-	li{
-		margin-bottom: 10px;
-		border : 1px solid gray;
-		background-color: #e7e7e7;
-		padding: 5px;
-		border-radius: 5px;
-	}
-	.bugname{
-		cursor: pointer;
-	}
+	

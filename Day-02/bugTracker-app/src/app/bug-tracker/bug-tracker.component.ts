@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBug } from '../models/IBug';
+import { BugStorage } from '../services/bugStorage.service';
 
 @Component({
 	moduleId: module.id,
@@ -11,29 +12,21 @@ export class BugTrackerComponent implements OnInit {
 	list : Array<IBug> = [];
 
 	
-	constructor() {}
+	constructor(private _bugStorage : BugStorage) {}
 
 	ngOnInit() {
-		
+		this.list = this._bugStorage.getAll();
 	}
 
 	onAddNewClick(bugName : string){
-		var newBug = {
-			name : bugName,
-			isClosed : false,
-			createdAt : new Date()
-		};
+		var newBug = this._bugStorage.addNew(bugName);
 		this.list = this.list.concat([newBug]);
 	}
 
 	onBugClick (bugToToggle : IBug) : void{ 
 		this.list = this.list.map(bugInlist => {
 			if (bugInlist === bugToToggle){
-				return {
-					name : bugToToggle.name,
-					isClosed : !bugToToggle.isClosed,
-					createdAt : bugToToggle.createdAt
-				}
+				return this._bugStorage.toggle(bugToToggle);
 			} else {
 				return bugInlist
 			}
@@ -41,6 +34,7 @@ export class BugTrackerComponent implements OnInit {
 	}
 
 	onRemoveClosedClick() : void{
+		this._bugStorage.removeClosed();
 		this.list = this.list.filter(bug => !bug.isClosed);
 	}
 

@@ -4,10 +4,10 @@ body{
 	section{
 		margin-bottom: 10px;
 	}
-	.stats, .bugname{
+	.bugname{
 		font-size: 20pt;
 	}
-	.closed{
+/deep/	.closed{
 		color : red;
 		text-decoration: line-through;
 		font-style: italic;

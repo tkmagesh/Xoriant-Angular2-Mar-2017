@@ -6,6 +6,10 @@ import { UtilsModule } from '../utils/utils.module';
 
 //importing components
 import { BugTrackerComponent } from './bug-tracker/bug-tracker.component';
+import { BugStatsComponent } from './bug-tracker/components/bug-stats/bugStats.component';
+import { BugEditComponent } from './bug-tracker/components/bug-edit/bugEdit.component';
+import { BugSortComponent } from './bug-tracker/components/bug-sort/bugSort.component';
+import { BugListComponent } from './bug-tracker/components/bug-list/bugList.component';
 
 //importing pipes
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
@@ -18,7 +22,11 @@ import { BugOperations } from './services/bugOperations.service';
   declarations: [
     //AppComponent
     BugTrackerComponent,
-    ClosedCountPipe
+    ClosedCountPipe,
+    BugStatsComponent,
+    BugEditComponent,
+    BugSortComponent,
+    BugListComponent
   ],
   imports: [
     BrowserModule,

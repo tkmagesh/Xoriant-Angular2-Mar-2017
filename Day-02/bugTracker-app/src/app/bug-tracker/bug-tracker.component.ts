@@ -11,6 +11,7 @@ import { BugStorage } from '../services/bugStorage.service';
 export class BugTrackerComponent implements OnInit {
 	list : Array<IBug> = [];
 
+	bugSortObj : any = {};
 	
 	constructor(private _bugStorage : BugStorage) {}
 
@@ -18,12 +19,16 @@ export class BugTrackerComponent implements OnInit {
 		this.list = this._bugStorage.getAll();
 	}
 
-	onAddNewClick(bugName : string){
+	sortHandler(data){
+		this.bugSortObj = data;
+	}
+
+	newBugHandler(bugName : string){
 		var newBug = this._bugStorage.addNew(bugName);
 		this.list = this.list.concat([newBug]);
 	}
 
-	onBugClick (bugToToggle : IBug) : void{ 
+	handleToggle (bugToToggle : IBug) : void{ 
 		this.list = this.list.map(bugInlist => {
 			if (bugInlist === bugToToggle){
 				return this._bugStorage.toggle(bugToToggle);
@@ -33,7 +38,7 @@ export class BugTrackerComponent implements OnInit {
 		});
 	}
 
-	onRemoveClosedClick() : void{
+	handleRemoveClosed() : void{
 		this._bugStorage.removeClosed();
 		this.list = this.list.filter(bug => !bug.isClosed);
 	}
